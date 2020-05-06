@@ -156,6 +156,7 @@ module OmniAuth
       private
 
       def validate_signature(secret)
+        binding.pry
         params = request.GET
         calculated_signature = self.class.hmac_sign(self.class.encoded_params_for_signature(params), secret)
         Rack::Utils.secure_compare(calculated_signature, params['hmac'])

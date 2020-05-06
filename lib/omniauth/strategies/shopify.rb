@@ -24,6 +24,7 @@ module OmniAuth
       option :per_user_permissions, false
 
       option :setup, proc { |env|
+        binding.pry
         strategy = env['omniauth.strategy']
 
         shopify_auth_params = strategy.session['shopify.omniauth_params'] && strategy.session['shopify.omniauth_params'].with_indifferent_access
@@ -50,6 +51,7 @@ module OmniAuth
       end
 
       def valid_site?
+        binding.pry
         !!(/\A(https|http)\:\/\/[a-zA-Z0-9][a-zA-Z0-9\-]*\.#{Regexp.quote(options[:myshopify_domain])}[\/]?\z/ =~ options[:client_options][:site])
       end
 

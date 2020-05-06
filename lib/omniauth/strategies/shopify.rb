@@ -55,7 +55,7 @@ module OmniAuth
 
       def valid_signature?
         return false unless request.POST.empty?
-
+        binding.pry
         params = request.GET
         signature = params['hmac']
         timestamp = params['timestamp']
